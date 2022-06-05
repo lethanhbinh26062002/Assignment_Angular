@@ -5,3 +5,9 @@ export type User = {
     password: string,
     status:number 
   };
+  export type UserAfter = {
+    name?: string,
+    email?: string,
+    password?: string,
+    status?:number 
+  };

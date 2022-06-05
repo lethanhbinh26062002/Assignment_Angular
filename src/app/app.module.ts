@@ -14,6 +14,9 @@ import { AdminProductListComponent } from './page/admin/admin-product/admin-prod
 import { AdminProductFormComponent } from './page/admin/admin-product/admin-product-form/admin-product-form.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AdminUserDetailComponent } from './page/admin/admin-user/admin-user-detail/admin-user-detail.component';
+import { AdminUserListComponent } from './page/admin/admin-user/admin-user-list/admin-user-list.component';
+import { AdminUserFormComponent } from './page/admin/admin-user/admin-user-form/admin-user-form.component';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     AdminLayoutComponent,
     AdminProductDetailComponent,
     AdminProductListComponent,
-    AdminProductFormComponent
+    AdminProductFormComponent,
+    AdminUserDetailComponent,
+    AdminUserListComponent,
+    AdminUserFormComponent,
   ],
   imports: [
     BrowserModule,

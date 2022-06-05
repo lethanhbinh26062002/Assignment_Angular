@@ -5,6 +5,9 @@ import { ClientLayoutComponent } from './layouts/client-layout/client-layout.com
 import { AdminProductDetailComponent } from './page/admin/admin-product/admin-product-detail/admin-product-detail.component';
 import { AdminProductFormComponent } from './page/admin/admin-product/admin-product-form/admin-product-form.component';
 import { AdminProductListComponent } from './page/admin/admin-product/admin-product-list/admin-product-list.component';
+import { AdminUserDetailComponent } from './page/admin/admin-user/admin-user-detail/admin-user-detail.component';
+import { AdminUserFormComponent } from './page/admin/admin-user/admin-user-form/admin-user-form.component';
+import { AdminUserListComponent } from './page/admin/admin-user/admin-user-list/admin-user-list.component';
 
 
 const routes: Routes = [
@@ -12,7 +15,6 @@ const routes: Routes = [
     path: 'admin',
     component: AdminLayoutComponent,
     children: [
-
       {
         path: 'products',
         children: [
@@ -32,6 +34,27 @@ const routes: Routes = [
             path: ':id',
             component: AdminProductDetailComponent
           }, // đẩy /admin/products/id xuống dưới cùng tránh việc nhầm id = 'create'
+        ]
+      },
+      {
+        path: 'users',
+        children: [
+          {
+            path: '',
+            component:AdminUserListComponent
+          },
+          {
+            path: 'create',
+            component:AdminUserFormComponent
+          },
+          {
+            path: 'edit/:id',
+            component:AdminUserFormComponent
+          },
+          {
+            path: ':id',
+            component:AdminUserDetailComponent
+          }
         ]
       }
     ]
