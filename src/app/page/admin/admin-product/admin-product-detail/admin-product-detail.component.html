@@ -1,0 +1,13 @@
+<div>
+    <a routerLink="/admin/products">
+      <button class="btn btn-primary">Quay lại</button>
+    </a>
+  </div>
+  <div>
+    <div>ID SP: {{product.id}}</div>
+    <div>Tên SP: {{product.name}}</div>
+    <div>Giá SP: {{product.price}}</div>
+    <div>Mô tả SP: {{product.description}}</div>
+    <div *ngIf="product.status === 0">Trạng thái SP: Dừng hoạt động</div>
+    <div *ngIf="product.status === 1">Trạng thái SP: Đang hoạt động</div>
+  </div>

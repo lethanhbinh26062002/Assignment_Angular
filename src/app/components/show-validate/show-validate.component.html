@@ -1,0 +1,24 @@
+<span *ngIf="(field.dirty || field.touched) && field.errors?.['required']"
+    class="text-warning">Nhập {{key}}
+</span>
+<span *ngIf="(field.dirty || field.touched) && field.errors?.['minlength']"
+    class="text-warning">{{key}} không đc dưới  {{field.errors?.['minlength'].requiredLength}} ký tự
+</span>
+<span *ngIf="(field.dirty || field.touched) && field.errors?.['maxlength']"
+    class="text-danger">{{key}} tối đa {{field.errors?.['maxlength'].requiredLength}} ký tự
+</span>
+<span *ngIf="(field.dirty || field.touched) && field.errors?.['min']"
+    class="text-warning"> Nhập {{key}} > {{field.errors?.['min'].min}} 
+</span>
+<span *ngIf="(field.dirty || field.touched) && field.errors?.['max']"
+    class="text-warning"> Nhập {{key}} <{{field.errors?.['max'].max}} 
+</span>
+<span *ngIf="(field.dirty || field.touched) && field.errors?.['email']"
+    class="text-warning">{{key}} chưa đúng định dạng
+</span>
+<!-- Custom validate -->
+<span
+  *ngIf="(field.dirty || field.touched) && field.errors?.['hasProductError']"
+  class="text-danger"
+>{{key}} phải chứa từ 'product'
+</span>

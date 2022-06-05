@@ -1,0 +1,23 @@
+<!-- Định nghĩa biến quản lý form -->
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="">Name</label>
+      <input type="text" class="form-control" formControlName="name">
+      <app-show-validate [field]="productForm.get('name')" key="Tên sản phẩm"></app-show-validate>
+      <br>
+      <label for="">Price</label>
+      <input type="number" class="form-control" formControlName="price">
+      <app-show-validate [field]="productForm.get('price')" key="Giá sản phẩm"></app-show-validate>
+      <br>
+      <label for="">Description</label>
+      <textarea name="description" formControlName="description" class="form-control" cols="30" rows="8"></textarea>
+      <app-show-validate [field]="productForm.get('description')" key="Mô tả sản phẩm"></app-show-validate>
+      <br>
+    </div>
+    <div>
+      <button
+        class="btn btn-success"
+        [disabled]="!productForm.valid"
+      >Submit</button>
+    </div>
+  </form>
