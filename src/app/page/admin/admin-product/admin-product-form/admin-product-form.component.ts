@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators, ValidationErrors, AbstractControl} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../../../services/product.service';
+import {ToastrService} from 'ngx-toastr'
 
 @Component({
   selector: 'app-admin-product-form',
@@ -15,7 +16,8 @@ export class AdminProductFormComponent implements OnInit {
   constructor(
     private productService: ProductService, // các phương thức call API
     private router: Router, // điều hướng
-    private activateRoute: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    public toastr: ToastrService
   ) {
     this.productForm = new FormGroup({
       // name: new FormControl('', Validators.required), // FormControl(giá trị mặc định)
@@ -40,7 +42,7 @@ export class AdminProductFormComponent implements OnInit {
     this.productId = this.activateRoute.snapshot.params['id']; // +'5'
 
     if (this.productId) {
-      this.productService.getProduct(+this.productId).subscribe(data => {
+      this.productService.getProduct(this.productId).subscribe(data => {
         // Cập nhật data cho form (data: {id: 5, name: '...'})
         this.productForm.patchValue({
           name: data.name,
@@ -76,6 +78,7 @@ export class AdminProductFormComponent implements OnInit {
     const data = {...this.productForm.value,status:1};
     // 2. Call API tạo mới
     return this.productService.createProduct(data).subscribe(data => {
+      this.toastr.success('Thêm thành công', 'Success');
       // 3. Quay lại danh sách product
       this.redirectToList();
       // 3.1 Khi đã quay về list thì ngOnInit trong list sẽ lại được chạy và call API

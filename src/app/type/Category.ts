@@ -1,13 +1,9 @@
-export type User = {
+export type Category = {
     _id: string, // nếu dùng nodejs thì là string
     name: string,
-    email: string,
-    password: string,
     status:number 
   };
-  export type UserAfter = {
+  export type CategoryAfter = {
     name?: string,
-    email?: string,
-    password?: string,
     status?:number 
   };

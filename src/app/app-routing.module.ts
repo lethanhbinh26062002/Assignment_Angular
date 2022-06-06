@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ClientLayoutComponent } from './layouts/client-layout/client-layout.component';
+import { AdminCategoryDetailComponent } from './page/admin/admin-category/admin-category-detail/admin-category-detail.component';
+import { AdminCategoryFormComponent } from './page/admin/admin-category/admin-category-form/admin-category-form.component';
+import { AdminCategoryListComponent } from './page/admin/admin-category/admin-category-list/admin-category-list.component';
 import { AdminProductDetailComponent } from './page/admin/admin-product/admin-product-detail/admin-product-detail.component';
 import { AdminProductFormComponent } from './page/admin/admin-product/admin-product-form/admin-product-form.component';
 import { AdminProductListComponent } from './page/admin/admin-product/admin-product-list/admin-product-list.component';
@@ -56,15 +59,65 @@ const routes: Routes = [
             component:AdminUserDetailComponent
           }
         ]
+      },
+      {
+        path: 'category',
+        children: [
+          {
+            path: '',
+            component:AdminCategoryListComponent
+          },
+          {
+            path: 'create',
+            component: AdminCategoryFormComponent
+          },
+          {
+            path: 'edit/:id',
+            component: AdminCategoryFormComponent
+          },
+          {
+            path: ':id',
+            component: AdminCategoryDetailComponent
+          }
+        ]
       }
     ]
   },
   {
     path: '',
     component:ClientLayoutComponent,
-    children: [
-
-    ]
+    // children: [
+    //   {
+    //     path: 'product',
+    //     component: ,
+    //   },
+    //   {
+    //     path: 'profile/:id',
+    //     component: ,
+    //     children: [
+    //       {
+    //         path: 'profile/edit/:id',
+    //         component: ,
+    //       }
+    //     ]
+    //   },
+    //   {
+    //     path: 'product/:id',
+    //     component: ,
+    //   },
+    //   {
+    //     path: 'category/:id',
+    //     component: ,
+    //   },
+    //   {
+    //     path: 'cart',
+    //     component: ,
+    //   },
+    //   {
+    //     path: 'search',
+    //     component: ,
+    //   }
+    // ]
   }
   // 1. Nếu có children thì ko sử dụng component để render
   // 2. Nếu vẫn muốn sd component(khung layout) thì trong component thì phải sd <router-outlet></router-outlet>

@@ -16,17 +16,17 @@ export class ProductService {
     return this.http.get<Product[]>(environment.products);
   }
 
-  getProduct (id: number): Observable<Product> {
+  getProduct (id: string): Observable<Product> {
     return this.http.get<Product>(`${environment.products}/${id}`);
   }
   
-  deleteProduct (id: number|string): Observable<any> {
+  deleteProduct (id:string): Observable<any> {
     return this.http.delete(`${environment.products}/${id}`);
   }
 
   // Dữ liệu gửi đi {name: string}, nhận về {id: number, name: string}
   createProduct (data: ProductAfter): Observable<Product> {
-    return this.http.post<Product>(`${environment.products}`, data);
+    return this.http.post<Product>(`${environment.products}/create`, data);
   }
   updateProduct (id: string, data: ProductAfter): Observable<Product> {
     return this.http.patch<Product>(`${environment.products}/${id}`, data);

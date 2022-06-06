@@ -17,7 +17,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let product of products">
-      <td>{{product.id}}</td>
+      <td>{{product._id}}</td>
       <td>{{product.name}}</td>
       <td>{{product.price}}</td>
       <td>{{product.description}}</td>
@@ -25,20 +25,20 @@
         <button
           *ngIf="product.status === 1"
           class="btn btn-success"
-          (click)="onUpdateStatus(product.id, 0)">ON</button>
+          (click)="onUpdateStatus(product._id, 0)">ON</button>
         <button
           *ngIf="product.status === 0"
           class="btn btn-dark"
-          (click)="onUpdateStatus(product.id, 1)">OFF</button>
+          (click)="onUpdateStatus(product._id, 1)">OFF</button>
       </td>
       <td>
-        <a routerLink="/admin/products/{{product.id}}">
+        <a routerLink="/admin/products/{{product._id}}">
           <button class="btn btn-primary">Detail</button> 
         </a>
-          <a routerLink="/admin/products/edit/{{product.id}}">
+          <a routerLink="/admin/products/edit/{{product._id}}">
             <button class="btn btn-warning mx-4">Edit</button>
           </a>
-        <button class="btn btn-danger" (click)="onDelete(product.id)">Delete</button>
+        <button class="btn btn-danger" (click)="onDelete(product._id)">Delete</button>
       </td>
     </tr>
   </tbody>

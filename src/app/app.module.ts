@@ -17,7 +17,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AdminUserDetailComponent } from './page/admin/admin-user/admin-user-detail/admin-user-detail.component';
 import { AdminUserListComponent } from './page/admin/admin-user/admin-user-list/admin-user-list.component';
 import { AdminUserFormComponent } from './page/admin/admin-user/admin-user-form/admin-user-form.component';
-
+import {ToastrModule} from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminCategoryDetailComponent } from './page/admin/admin-category/admin-category-detail/admin-category-detail.component';
+import { AdminCategoryListComponent } from './page/admin/admin-category/admin-category-list/admin-category-list.component';
+import { AdminCategoryFormComponent } from './page/admin/admin-category/admin-category-form/admin-category-form.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,9 @@ import { AdminUserFormComponent } from './page/admin/admin-user/admin-user-form/
     AdminUserDetailComponent,
     AdminUserListComponent,
     AdminUserFormComponent,
+    AdminCategoryDetailComponent,
+    AdminCategoryListComponent,
+    AdminCategoryFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +46,9 @@ import { AdminUserFormComponent } from './page/admin/admin-user/admin-user-form/
     NgbModule,
     FormsModule, // FormsModule đc sử dụng trong các component đã  có bên trên
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
