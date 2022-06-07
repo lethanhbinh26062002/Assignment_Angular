@@ -12,22 +12,22 @@ export class CategoryService {
   constructor(private http: HttpClient) {
 
   }
-  getCategory (): Observable<Category[]>{
+  getCategorys (): Observable<Category[]>{
     return this.http.get<Category[]>(environment.category);
   }
-  getProduct (id: string): Observable<Category> {
+  getCategory (id: string): Observable<Category> {
     return this.http.get<Category>(`${environment.category}/${id}`);
   }
   
-  deleteProduct (id:string): Observable<any> {
+  deleteCategory (id:string): Observable<any> {
     return this.http.delete(`${environment.category}/${id}`);
   }
 
   // Dữ liệu gửi đi {name: string}, nhận về {id: number, name: string}
-  createProduct (data: CategoryAfter): Observable<Category> {
+  createCategory (data: CategoryAfter): Observable<Category> {
     return this.http.post<Category>(`${environment.category}/create`, data);
   }
-  updateProduct (id: string, data: CategoryAfter): Observable<Category> {
+  updateCategory (id: string, data: CategoryAfter): Observable<Category> {
     return this.http.patch<Category>(`${environment.category}/${id}`, data);
   }
 }

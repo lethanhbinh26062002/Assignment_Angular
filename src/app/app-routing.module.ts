@@ -61,7 +61,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'category',
+        path: 'categorys',
         children: [
           {
             path: '',

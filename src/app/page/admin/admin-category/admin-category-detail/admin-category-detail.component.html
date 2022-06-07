@@ -1,1 +1,11 @@
-<p>admin-category-detail works!</p>
+<div>
+    <a routerLink="/admin/categorys">
+      <button class="btn btn-primary">Quay lại</button>
+    </a>
+  </div>
+  <div>
+    <div>ID danh mục: {{category._id}}</div>
+    <div>Tên danh mục: {{category.name}}</div>
+    <div *ngIf="category.status === 0">Trạng thái danh mục: Dừng hoạt động</div>
+    <div *ngIf="category.status === 1">Trạng thái danh mục: Đang hoạt động</div>
+  </div>

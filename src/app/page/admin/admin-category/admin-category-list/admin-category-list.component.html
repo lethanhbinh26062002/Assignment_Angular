@@ -1,1 +1,42 @@
-<p>admin-category-list works!</p>
+<div>
+    <a routerLink="/admin/categorys/create">
+      <button class="btn btn-primary">Create</button>
+    </a>
+  </div>
+  <br>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of categorys">
+        <td>{{category._id}}</td>
+        <td>{{category.name}}</td>
+        <td>
+          <button
+            *ngIf="category.status === 1"
+            class="btn btn-success"
+            (click)="onUpdateStatus(category._id, 0)">ON</button>
+          <button
+            *ngIf="category.status === 0"
+            class="btn btn-dark"
+            (click)="onUpdateStatus(category._id, 1)">OFF</button>
+        </td>
+        <td>
+          <a routerLink="/admin/categorys/{{category._id}}">
+            <button class="btn btn-primary">Detail</button> 
+          </a>
+            <a routerLink="/admin/categorys/edit/{{category._id}}">
+              <button class="btn btn-warning mx-4">Edit</button>
+            </a>
+          <button class="btn btn-danger" (click)="onDelete(category._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

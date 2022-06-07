@@ -1,1 +1,11 @@
-<p>admin-category-form works!</p>
+<form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="">Name</label>
+        <input type="text" class="form-control" formControlName="name">
+        <app-show-validate [field]="categoryForm.get('name')" key="Tên danh mục"></app-show-validate>
+        <br>
+    </div>
+    <div>
+        <button class="btn btn-success" [disabled]="!categoryForm.valid">Submit</button>
+    </div>
+</form>
