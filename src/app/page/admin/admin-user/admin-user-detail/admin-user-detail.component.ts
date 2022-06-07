@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/type/User';
 
 @Component({
   selector: 'app-admin-user-detail',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminUserDetailComponent implements OnInit {
 
-  constructor() { }
+  user: User;
 
-  ngOnInit(): void {
+  constructor(
+    private userService: UserService,
+    private activateRoute: ActivatedRoute
+  ) {
+    this.user = {
+      _id: '',
+      name: '',
+      email: '',
+      password: '',
+      status: 0,
+    };
   }
 
+  ngOnInit(): void {
+    // ActivateRoute sẽ có thể đọc biến được truyền vào trên url
+    // tên id được định nghĩa ở app-routing :id
+    const idFromUrl = this.activateRoute.snapshot.params['id'];
+
+    this.userService.getUser(idFromUrl).subscribe(data => {
+      this.user = data;
+    })
+  }
 }

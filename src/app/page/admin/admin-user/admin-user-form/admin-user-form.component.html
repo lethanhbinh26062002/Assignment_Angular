@@ -1,1 +1,19 @@
-<p>admin-user-form works!</p>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="">Name</label>
+        <input type="text" class="form-control" formControlName="name">
+        <app-show-validate [field]="userForm.get('name')" key="Tên user"></app-show-validate>
+        <br>
+        <label for="">Email</label>
+        <input type="email" class="form-control" formControlName="email">
+        <app-show-validate [field]="userForm.get('email')" key="Email user"></app-show-validate>
+        <br>
+        <label for="">Password</label>
+        <input type="text" class="form-control" formControlName="password">
+        <app-show-validate [field]="userForm.get('password')" key="Password user"></app-show-validate>
+        <br>
+    </div>
+    <div>
+        <button class="btn btn-success" [disabled]="!userForm.valid">Submit</button>
+    </div>
+</form>

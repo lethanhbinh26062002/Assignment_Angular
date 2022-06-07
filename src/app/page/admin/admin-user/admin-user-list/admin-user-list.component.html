@@ -1,1 +1,44 @@
-<p>admin-user-list works!</p>
+<div>
+    <a routerLink="/admin/users/create">
+      <button class="btn btn-primary">Create</button>
+    </a>
+  </div>
+  <br>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user._id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>
+          <button
+            *ngIf="user.status === 1"
+            class="btn btn-success"
+            (click)="onUpdateStatus(user._id, 0)">ON</button>
+          <button
+            *ngIf="user.status === 0"
+            class="btn btn-dark"
+            (click)="onUpdateStatus(user._id, 1)">OFF</button>
+        </td>
+        <td>
+          <a routerLink="/admin/users/{{user._id}}">
+            <button class="btn btn-primary">Detail</button> 
+          </a>
+            <a routerLink="/admin/users/edit/{{user._id}}">
+              <button class="btn btn-warning mx-4">Edit</button>
+            </a>
+          <button class="btn btn-danger" (click)="onDelete(user._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
