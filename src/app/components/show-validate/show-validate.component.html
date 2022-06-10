@@ -1,5 +1,6 @@
 <span *ngIf="(field.dirty || field.touched) && field.errors?.['required']"
     class="text-warning">Nhập {{key}}
+    
 </span>
 <span *ngIf="(field.dirty || field.touched) && field.errors?.['minlength']"
     class="text-warning">{{key}} không đc dưới  {{field.errors?.['minlength'].requiredLength}} ký tự

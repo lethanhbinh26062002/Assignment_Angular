@@ -1,0 +1,21 @@
+<div class="row pb-5 mb-4">
+
+    <div *ngFor="let product of products" class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+      <div class="card rounded shadow-sm border-0">
+        <div class="card-body p-4"><img src="https://img4.thuthuatphanmem.vn/uploads/2020/12/26/hinh-anh-cuon-sach-mo-ra_051500221.png" alt="" class="img-fluid d-block mx-auto mb-3">
+          <h5> <a routerLink="/products/{{product._id}}" class="text-dark">{{product.name}}</a></h5>
+          <h5 style="color:red">{{product.price}}VNĐ</h5>
+          <p class="small text-muted font-italic">{{product.description}}</p>
+          <ul class="list-inline small">
+            <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+            <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+            <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+            <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+            <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
+          </ul>
+        </div>
+      </div>
+      <br>
+    </div>
+    <br>
+  </div>
