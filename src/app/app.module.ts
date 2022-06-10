@@ -22,6 +22,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminCategoryDetailComponent } from './page/admin/admin-category/admin-category-detail/admin-category-detail.component';
 import { AdminCategoryListComponent } from './page/admin/admin-category/admin-category-list/admin-category-list.component';
 import { AdminCategoryFormComponent } from './page/admin/admin-category/admin-category-form/admin-category-form.component';
+import { HomePageComponent } from './page/client/home-page/home-page.component';
+import { ProductDetailPageComponent } from './page/client/product-detail-page/product-detail-page.component';
+import { ErrorPageComponent } from './page/error-page/error-page.component';
+import { ProductCategoryComponent } from './page/client/product-category/product-category.component';
+import { CartComponent } from './components/cart/cart.component';
+import { CartPageComponent } from './page/client/cart-page/cart-page.component';
+import { LoginComponent } from './page/client/login/login.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +46,13 @@ import { AdminCategoryFormComponent } from './page/admin/admin-category/admin-ca
     AdminCategoryDetailComponent,
     AdminCategoryListComponent,
     AdminCategoryFormComponent,
+    HomePageComponent,
+    ProductDetailPageComponent,
+    ErrorPageComponent,
+    ProductCategoryComponent,
+    CartComponent,
+    CartPageComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

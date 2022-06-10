@@ -3,6 +3,8 @@ import {FormGroup, FormControl, Validators, ValidationErrors, AbstractControl} f
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../../../services/product.service';
 import {ToastrService} from 'ngx-toastr'
+import { Category } from 'src/app/type/Category';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-admin-product-form',
@@ -12,13 +14,16 @@ import {ToastrService} from 'ngx-toastr'
 export class AdminProductFormComponent implements OnInit {
   productForm: FormGroup;
   productId: string;
+  categorys: Category[];
 
   constructor(
     private productService: ProductService, // các phương thức call API
     private router: Router, // điều hướng
     private activateRoute: ActivatedRoute,
-    public toastr: ToastrService
+    public toastr: ToastrService,
+    private categoryService: CategoryService
   ) {
+    this.categorys = [];
     this.productForm = new FormGroup({
       // name: new FormControl('', Validators.required), // FormControl(giá trị mặc định)
       name: new FormControl('', [
@@ -31,6 +36,13 @@ export class AdminProductFormComponent implements OnInit {
         Validators.required,
         Validators.min(0),
       ]),
+      sale_price: new FormControl(0,[
+        Validators.required,
+        Validators.min(0),
+      ]),
+      category: new FormControl({},[
+        Validators.required,
+      ]),
       description: new FormControl('',[
         Validators.required,
       ])
@@ -39,6 +51,7 @@ export class AdminProductFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.onGetList();
     this.productId = this.activateRoute.snapshot.params['id']; // +'5'
 
     if (this.productId) {
@@ -47,20 +60,11 @@ export class AdminProductFormComponent implements OnInit {
         this.productForm.patchValue({
           name: data.name,
           price: data.price,
+          sale_price: data.sale_price,
           description: data.description
-          // price: data.price
         });
       })
     }
-  }
-  onValidateNameHasProduct (control: AbstractControl): ValidationErrors|null {
-    const inputValue = control.value;
-
-    if (!inputValue.includes('product')) {
-      return {hasProductError: true};
-    }
-
-    return null;
   }
   redirectToList() {
     this.router.navigateByUrl('/admin/products');
@@ -71,11 +75,15 @@ export class AdminProductFormComponent implements OnInit {
     // 1. nhận dữ liệu từ form => this.productForm.value
     if (this.productId !== '' && this.productId !== undefined) {
       return this.productService.updateProduct(this.productId, dataUpdate).subscribe(data => {
+        this.toastr.success('Sửa thành công', 'Success');
         this.redirectToList();
       })
     }
     
-    const data = {...this.productForm.value,status:1};
+    const data = {
+      ...this.productForm.value,
+      status:1
+    };
     // 2. Call API tạo mới
     return this.productService.createProduct(data).subscribe(data => {
       this.toastr.success('Thêm thành công', 'Success');
@@ -84,5 +92,14 @@ export class AdminProductFormComponent implements OnInit {
       // 3.1 Khi đã quay về list thì ngOnInit trong list sẽ lại được chạy và call API
       // lấy ds mới
     })
+  }
+  // Lấy ds sẽ được gọi khi lần đầu render và khi xoá mỗi phần tử
+  onGetList() {
+    // Lắng nghe API trả về kq, bao giờ trả về xong thì data sẽ có dữ liệu
+    this.categoryService.getCategorys().subscribe((data) => {
+      // Khi có dữ liệu sẽ gán về cho danh sách
+      this.categorys = data;
+      console.log(data );
+    });
   }
 }

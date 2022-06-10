@@ -21,12 +21,10 @@ export class AdminUserFormComponent implements OnInit {
     public toastr: ToastrService
   ) {
     this.userForm = new FormGroup({
-      // name: new FormControl('', Validators.required), // FormControl(giá trị mặc định)
       name: new FormControl('', [
         Validators.required,
         Validators.minLength(6),
-        // this.onValidateNameHasProduct 
-      ]), // FormControl(giá trị mặc định)
+      ]),
       email: new FormControl('',[    
         Validators.required,
         Validators.email
@@ -44,7 +42,6 @@ export class AdminUserFormComponent implements OnInit {
 
     if (this.userId) {
       this.userService.getUser(this.userId).subscribe(data => {
-        // Cập nhật data cho form (data: {id: 5, name: '...'})
         this.userForm.patchValue({
           name: data.name,
           email: data.email,
@@ -61,6 +58,7 @@ export class AdminUserFormComponent implements OnInit {
     const dataUpdate = this.userForm.value
     if (this.userId !== '' && this.userId !== undefined) {
       return this.userService.updateUser(this.userId, dataUpdate).subscribe(data => {
+        this.toastr.success('Sửa thành công', 'Success');
         this.redirectToList();
       })
     }

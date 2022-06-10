@@ -1,0 +1,22 @@
+<div class="wrapper">
+    <div class="product-img">
+      <img src="https://img4.thuthuatphanmem.vn/uploads/2020/12/26/hinh-anh-cuon-sach-mo-ra_051500221.png" height="420">
+    </div>
+    <div class="product-info">
+      <div class="product-text">
+        <h1>{{product.name}}</h1>
+        <h2>by studio and friends</h2>
+        <p>{{product.description}}</p>
+      </div>
+      <p style="color: red"><del> {{product.price}}</del>VNĐ</p>
+      <p style="font-weight:bold; font-size:normal"> {{product.sale_price}}VNĐ</p>
+      <input
+      type="number"
+      min="1"
+      class="form-control cart-value"
+      [value]="cartValue"
+      (input)="onChangeCartValue($event)"
+    />
+    <button (click)="onAddToCart()"  class="btn btn-success">Buy now</button>
+    </div>
+  </div>

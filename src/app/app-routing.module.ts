@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CartComponent } from './components/cart/cart.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ClientLayoutComponent } from './layouts/client-layout/client-layout.component';
 import { AdminCategoryDetailComponent } from './page/admin/admin-category/admin-category-detail/admin-category-detail.component';
@@ -11,6 +12,12 @@ import { AdminProductListComponent } from './page/admin/admin-product/admin-prod
 import { AdminUserDetailComponent } from './page/admin/admin-user/admin-user-detail/admin-user-detail.component';
 import { AdminUserFormComponent } from './page/admin/admin-user/admin-user-form/admin-user-form.component';
 import { AdminUserListComponent } from './page/admin/admin-user/admin-user-list/admin-user-list.component';
+import { CartPageComponent } from './page/client/cart-page/cart-page.component';
+import { HomePageComponent } from './page/client/home-page/home-page.component';
+import { LoginComponent } from './page/client/login/login.component';
+import { ProductCategoryComponent } from './page/client/product-category/product-category.component';
+import { ProductDetailPageComponent } from './page/client/product-detail-page/product-detail-page.component';
+import { ErrorPageComponent } from './page/error-page/error-page.component';
 
 
 const routes: Routes = [
@@ -86,25 +93,30 @@ const routes: Routes = [
   {
     path: '',
     component:ClientLayoutComponent,
+    children:[
+      {
+        path: '',
+        component:HomePageComponent,
+      },
+      {
+        path: 'products/:id',
+        component: ProductDetailPageComponent,
+      },
+      {
+        path: 'products/proCate/:id',
+        component:ProductCategoryComponent,
+      },
+      {
+        path:'cart',
+        component:CartPageComponent,
+      },
+      {
+        path: 'login',
+        component:LoginComponent,
+      }
+    ]
     // children: [
-    //   {
-    //     path: 'product',
-    //     component: ,
-    //   },
-    //   {
-    //     path: 'profile/:id',
-    //     component: ,
-    //     children: [
-    //       {
-    //         path: 'profile/edit/:id',
-    //         component: ,
-    //       }
-    //     ]
-    //   },
-    //   {
-    //     path: 'product/:id',
-    //     component: ,
-    //   },
+
     //   {
     //     path: 'category/:id',
     //     component: ,
@@ -118,6 +130,10 @@ const routes: Routes = [
     //     component: ,
     //   }
     // ]
+  },
+  {
+    path: '404',
+    component:ErrorPageComponent,
   }
   // 1. Nếu có children thì ko sử dụng component để render
   // 2. Nếu vẫn muốn sd component(khung layout) thì trong component thì phải sd <router-outlet></router-outlet>

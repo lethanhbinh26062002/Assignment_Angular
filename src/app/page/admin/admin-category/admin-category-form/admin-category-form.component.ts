@@ -47,6 +47,7 @@ export class AdminCategoryFormComponent implements OnInit {
     const dataUpdate = this.categoryForm.value
     if (this.categoryId !== '' && this.categoryId !== undefined) {
       return this.categoryService.updateCategory(this.categoryId, dataUpdate).subscribe(data => {
+        this.toastr.success('Sửa thành công', 'Success');
         this.redirectToList();
       })
     }

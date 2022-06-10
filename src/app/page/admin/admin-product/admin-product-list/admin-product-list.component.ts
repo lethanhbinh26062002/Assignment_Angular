@@ -15,7 +15,8 @@ export class AdminProductListComponent implements OnInit {
   // Định nghĩa service dưới tên 1 biến, đã tạo bên services
   constructor(
     private productService: ProductService,
-    private toastr: ToastrService) {
+    private toastr: ToastrService) 
+  {
     this.products = [];
   }
 

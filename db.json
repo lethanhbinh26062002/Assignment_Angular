@@ -1,0 +1,25 @@
+{
+  "products": [
+    {
+      "name": "sản phẩm 1",
+      "price": 26,
+      "description": "mô tả sản phẩm 1\n",
+      "status": 1,
+      "id": 2
+    },
+    {
+      "name": "Sản phẩm 2",
+      "price": 25,
+      "description": "mô tả test",
+      "status": 0,
+      "id": 3
+    },
+    {
+      "name": "test key 3",
+      "price": 211,
+      "description": "test key ",
+      "status": 1,
+      "id": 4
+    }
+  ]
+}

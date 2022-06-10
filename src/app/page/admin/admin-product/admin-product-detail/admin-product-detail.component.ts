@@ -20,7 +20,7 @@ export class AdminProductDetailComponent implements OnInit {
       name: '',
       price: 0,
       sale_price: 0,
-      img:'',
+      category:'',
       description: '',
       status: 0,
     };

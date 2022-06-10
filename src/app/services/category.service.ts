@@ -18,7 +18,9 @@ export class CategoryService {
   getCategory (id: string): Observable<Category> {
     return this.http.get<Category>(`${environment.category}/${id}`);
   }
-  
+  getProductByCategory (id: string): Observable<Category> {
+    return this.http.get<Category>(`${environment.category}/proCate/${id}`);
+  }
   deleteCategory (id:string): Observable<any> {
     return this.http.delete(`${environment.category}/${id}`);
   }
