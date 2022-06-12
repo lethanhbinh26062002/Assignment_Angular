@@ -17,6 +17,7 @@ import { AdminUserListComponent } from './page/admin/admin-user/admin-user-list/
 import { CartPageComponent } from './page/client/cart-page/cart-page.component';
 import { HomePageComponent } from './page/client/home-page/home-page.component';
 import { LoginComponent } from './page/client/login/login.component';
+import { LogoutComponent } from './page/client/logout/logout.component';
 import { ProductCategoryComponent } from './page/client/product-category/product-category.component';
 import { ProductDetailPageComponent } from './page/client/product-detail-page/product-detail-page.component';
 import { SignUpComponent } from './page/client/sign-up/sign-up.component';
@@ -130,7 +131,7 @@ const routes: Routes = [
   },
   {
     path: 'logout',
-    component:LayoutsComponent
+    component:LogoutComponent
   }
   // 1. Nếu có children thì ko sử dụng component để render
   // 2. Nếu vẫn muốn sd component(khung layout) thì trong component thì phải sd <router-outlet></router-outlet>

@@ -22,10 +22,8 @@
                       <li><h6>Art Director:</h6> Jane Doe</li>
                       <li><h6>Designer:</h6> Jimmy Doe</li>
                   </ul>
-
-                  <button (click)="onAddToCart()" class="btn btn-inverse pull-left" type="button">Buy now</button>
-                  <input type="number" min="1" class="form-control cart-value" style="margin-left: 25px; margin-bottom: 0; width: 125px;" [value]="cartValue" (input)="onChangeCartValue($event)"
-                />
+                    <button (click)="onAddToCart()" class="btn btn-inverse pull-left" type="button">Buy now</button>
+                    <input type="number" min="1" class="form-control cart-value" style="margin-left: 25px; margin-bottom: 0; width: 125px;" [value]="cartValue" (input)="onChangeCartValue($event)"/>
               </div>
           </div>
 

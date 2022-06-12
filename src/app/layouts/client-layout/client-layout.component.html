@@ -93,7 +93,7 @@ $(document).ready(function () {
              <li class="dropdown">
                 <a class="" routerLink="">Blog</a>
              </li>
-             <li><a routerLink="/cart"><app-cart></app-cart></a></li>
+             <li *ngIf="log === true"><a routerLink="/cart"><app-cart></app-cart></a></li>
              <li *ngIf="role === 1"><a routerLink="/admin/products">Admin</a></li>
             </ul>
            
@@ -105,8 +105,9 @@ $(document).ready(function () {
     <div class="row gallery-row"><!-- Begin Gallery Row --> 
       
     	<div class="span12">
-            <h5 class="title-bg">Recent Work 
-                <small>That we are most proud of</small>
+            <h5 class="title-bg">Hello 
+                <small *ngIf="name !== ''"> {{name}}</small>
+                <small *ngIf="name == '' "> User</small>
                 <button class="btn btn-mini btn-inverse hidden-phone" type="button">View Portfolio</button>
             </h5>
         </div>

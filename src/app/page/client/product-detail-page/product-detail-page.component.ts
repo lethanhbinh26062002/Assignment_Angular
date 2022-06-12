@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
@@ -36,7 +36,6 @@ export class ProductDetailPageComponent implements OnInit {
     };
     this.cartValue = 1;
    }
-
   ngOnInit(): void {
     // ActivateRoute sẽ có thể đọc biến được truyền vào trên url
     // tên id được định nghĩa ở app-routing :id
@@ -49,16 +48,11 @@ export class ProductDetailPageComponent implements OnInit {
   onChangeCartValue(event: any) {
     this.cartValue = event.target.value;
   }
-
   onAddToCart() {
-    // Định nghĩa 1 sp trong giỏ hàng có cấu trúc là gì
     const addItem = {
       ...this.product,
       value: +this.cartValue
     };
-    // Nếu thực hiện như cũ, thì phía component cart sẽ không lắng nghe được
-
-    // Thực hiện gọi lsService để component cart có thể lắng nghe thay đổi
     this.lsService.setItem(addItem);
     this.cartValue = 1;
     this.toastr.success('Thêm vào giỏ hàng thành công', 'Success')

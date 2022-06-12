@@ -19,6 +19,7 @@ import { Category } from 'src/app/type/Category';
 export class ClientLayoutComponent implements OnInit {
   categorys: Category[];
   @Input() role:number
+  @Input() name:string
   @Input() log:boolean = false
   constructor(
     private categoryService: CategoryService,
@@ -26,6 +27,7 @@ export class ClientLayoutComponent implements OnInit {
     public toastr: ToastrService) {
     this.categorys = [];
     this.role = 0;
+    this.name = '';
   }
   // Khi component render xong sẽ chạy 1 lần vào ngOnInit
   ngOnInit(): void {
@@ -45,15 +47,12 @@ export class ClientLayoutComponent implements OnInit {
     const User = JSON.parse(localStorage.getItem('loggedInUser') || '[]');
     if(User){
       const roleUser = User.user.role
+      const nameUser = User.user.name
+      this.name = nameUser;
       this.role = roleUser;
     }
     if(User){
       this.log = true
     }
-  }
-  logOut() {
-    localStorage.removeItem('loggedInUser');
-    this.toastr.success('Log Out thành công', 'Success');
-    this.router.navigateByUrl('');
   }
 }
