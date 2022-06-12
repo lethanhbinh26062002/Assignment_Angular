@@ -22,9 +22,11 @@
                         <li *ngFor="let category of categorys" ><a routerLink="/products/proCate/{{category._id}}">{{category.name}}</a></li>
                       </ul>
                     </li>
-                    <li><a routerLink="/login">Login</a></li>
-                    <li><a routerLink="/signup">SignUp</a></li>
-                    <li><a routerLink="/admin/products">Admin</a></li>
+                    <li *ngIf="log === false"><a routerLink="/login">Log In</a></li>
+                    <li *ngIf="log === false"><a routerLink="/signup">Register</a></li>
+                    <li *ngIf="log === true"><a routerLink="" (click)="logOut()">Log Out</a></li>
+                    <li *ngIf="role === 1"><a routerLink="/admin/products">Admin</a></li>
+                    <li *ngIf="role === 0"><a routerLink="">Info</a></li>
                     <li><a routerLink="/cart"><app-cart></app-cart></a></li>
                   </ul>
               </nav>

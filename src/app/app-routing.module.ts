@@ -126,7 +126,7 @@ const routes: Routes = [
   {
     path: '403',
     component:ErrorPageComponent,
-  }
+  },
   // 1. Nếu có children thì ko sử dụng component để render
   // 2. Nếu vẫn muốn sd component(khung layout) thì trong component thì phải sd <router-outlet></router-outlet>
   // {

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from 'src/app/services/category.service';
 import { Category } from 'src/app/type/Category';
 
@@ -9,13 +11,19 @@ import { Category } from 'src/app/type/Category';
 })
 export class ClientLayoutComponent implements OnInit {
   categorys: Category[];
+  @Input() role:number
+  @Input() log:boolean = false
   constructor(
-    private categoryService: CategoryService) {
+    private categoryService: CategoryService,
+    private router: Router,
+    public toastr: ToastrService) {
     this.categorys = [];
+    this.role = 0;
   }
   // Khi component render xong sẽ chạy 1 lần vào ngOnInit
   ngOnInit(): void {
     this.onGetList();
+    this.checkRole()
   }
 
   // Lấy ds sẽ được gọi khi lần đầu render và khi xoá mỗi phần tử
@@ -25,5 +33,21 @@ export class ClientLayoutComponent implements OnInit {
       // Khi có dữ liệu sẽ gán về cho danh sách
       this.categorys = data;
     });
+  }
+  checkRole(){
+    const User = JSON.parse(localStorage.getItem('loggedInUser') || '[]');
+    if(User){
+      const roleUser = User.user.role
+      this.role = roleUser;
+    }
+    if(User){
+      this.log = true
+    }
+  }
+  logOut() {
+    localStorage.removeItem('loggedInUser');
+    this.toastr.success('Log Out thành công', 'Success');
+    this.router.navigateByUrl('');
+    this.onGetList();
   }
 }

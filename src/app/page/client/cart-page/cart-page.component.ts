@@ -29,8 +29,8 @@ export class CartPageComponent implements OnInit {
       const result = JSON.parse(localStorage.getItem('cart') || '[]');
       const newData = result.filter((x: any) => x._id !== id);
       localStorage.setItem('cart', JSON.stringify(newData));
+      this.toastr.success('Xóa thành công', 'Success');
     }
-    this.toastr.success('Xóa thành công', 'Success');
     this.onGetCart()
   }
 
