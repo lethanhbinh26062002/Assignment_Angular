@@ -17,6 +17,7 @@ export class ClientLayoutComponent implements OnInit {
   ngOnInit(): void {
     this.onGetList();
   }
+
   // Lấy ds sẽ được gọi khi lần đầu render và khi xoá mỗi phần tử
   onGetList() {
     // Lắng nghe API trả về kq, bao giờ trả về xong thì data sẽ có dữ liệu

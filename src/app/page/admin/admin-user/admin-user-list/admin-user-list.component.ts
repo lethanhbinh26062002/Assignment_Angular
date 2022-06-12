@@ -39,6 +39,14 @@ export class AdminUserListComponent implements OnInit {
       this.toastr.success('Thay đổi status thành công', 'Success');
     });
   }
+  onUpdateRole(userId: string, newRole: number) {
+    this.userService.updateUser(userId, {
+      role: newRole
+    }).subscribe(data => {
+      this.onGetList();
+      this.toastr.success('Thay đổi role thành công', 'Success');
+    });
+  }
   onDelete(id: string) {
     // confirm
     const confirmDelete = confirm('Bạn có chắc chắn xoá không?');

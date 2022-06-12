@@ -11,6 +11,7 @@
         <th>Name</th>
         <th>Email</th>
         <th>Status</th>
+        <th>Role</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -28,6 +29,16 @@
             *ngIf="user.status === 0"
             class="btn btn-dark"
             (click)="onUpdateStatus(user._id, 1)">OFF</button>
+        </td>
+        <td>
+          <button
+            *ngIf="user.role === 1"
+            class="btn btn-info"
+            (click)="onUpdateRole(user._id, 0)">Admin</button>
+          <button
+            *ngIf="user.role === 0"
+            class="btn btn-dark"
+            (click)="onUpdateRole(user._id, 1)">User</button>
         </td>
         <td>
           <a routerLink="/admin/users/{{user._id}}">

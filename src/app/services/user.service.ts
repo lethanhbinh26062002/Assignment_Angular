@@ -29,6 +29,9 @@ export class UserService {
   createUser (data: UserAfter): Observable<User> {
     return this.http.post<User>(`${environment.users}/create`, data);
   }
+  signup (data: UserAfter): Observable<User> {
+    return this.http.post<User>(`${environment.signup}`, data);
+  }
   updateUser (id: string, data: UserAfter): Observable<User> {
     return this.http.patch<User>(`${environment.users}/${id}`, data);
   }

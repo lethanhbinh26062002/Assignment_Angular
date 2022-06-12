@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './components/cart/cart.component';
+import { CanAccessAdminGuard } from './guards/can-access-admin.guard';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ClientLayoutComponent } from './layouts/client-layout/client-layout.component';
 import { AdminCategoryDetailComponent } from './page/admin/admin-category/admin-category-detail/admin-category-detail.component';
@@ -17,6 +18,7 @@ import { HomePageComponent } from './page/client/home-page/home-page.component';
 import { LoginComponent } from './page/client/login/login.component';
 import { ProductCategoryComponent } from './page/client/product-category/product-category.component';
 import { ProductDetailPageComponent } from './page/client/product-detail-page/product-detail-page.component';
+import { SignUpComponent } from './page/client/sign-up/sign-up.component';
 import { ErrorPageComponent } from './page/error-page/error-page.component';
 
 
@@ -24,6 +26,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminLayoutComponent,
+    canActivate: [CanAccessAdminGuard],
     children: [
       {
         path: 'products',
@@ -110,29 +113,18 @@ const routes: Routes = [
         path:'cart',
         component:CartPageComponent,
       },
-      {
-        path: 'login',
-        component:LoginComponent,
-      }
     ]
-    // children: [
-
-    //   {
-    //     path: 'category/:id',
-    //     component: ,
-    //   },
-    //   {
-    //     path: 'cart',
-    //     component: ,
-    //   },
-    //   {
-    //     path: 'search',
-    //     component: ,
-    //   }
-    // ]
   },
   {
-    path: '404',
+    path: 'login',
+    component:LoginComponent,
+  },
+  {
+    path: 'signup',
+    component:SignUpComponent,
+  },
+  {
+    path: '403',
     component:ErrorPageComponent,
   }
   // 1. Nếu có children thì ko sử dụng component để render
@@ -155,6 +147,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [CanAccessAdminGuard]
 })
 export class AppRoutingModule { }

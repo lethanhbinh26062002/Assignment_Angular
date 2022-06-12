@@ -22,6 +22,7 @@ export class AdminUserDetailComponent implements OnInit {
       email: '',
       password: '',
       status: 0,
+      role:0
     };
   }
 

@@ -14,18 +14,17 @@
 <body>
     <div class="container">
         <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 shadow-sm">
                 <ul class="menu cf">
                     <li><a routerLink="">Home page</a></li>
-                    <li>
-                        <a>Category</a>
-                        <ul class="submenu">
-                             <li *ngFor="let category of categorys" ><a routerLink="products/proCate/{{category._id}}">{{category.name}}</a></li>
-                         </ul>
+                    <li><a routerLink="">Category</a>
+                      <ul class="submenu">
+                        <li *ngFor="let category of categorys" ><a routerLink="/products/proCate/{{category._id}}">{{category.name}}</a></li>
+                      </ul>
                     </li>
-                    <li><a routerLink="/admin/products">Admin</a></li>
-                    <li><a routerLink="">SignUp</a></li>
                     <li><a routerLink="/login">Login</a></li>
+                    <li><a routerLink="/signup">SignUp</a></li>
+                    <li><a routerLink="/admin/products">Admin</a></li>
                     <li><a routerLink="/cart"><app-cart></app-cart></a></li>
                   </ul>
               </nav>

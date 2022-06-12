@@ -1,19 +1,24 @@
 <div class="container mx-auto">
 	<div class="screen">
 		<div class="screen__content">
-			<form class="login"   [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+			<form class="login"   [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+                <div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					<input type="text" class="login__input" placeholder="Name" formControlName="name">
+				</div>
+                <app-show-validate [field]="signUpForm.get('name')" key="Name"></app-show-validate>
 				<div class="login__field">
 					<i class="login__icon fas fa-user"></i>
 					<input type="email" class="login__input" placeholder="Email" formControlName="email">
 				</div>
-				<app-show-validate [field]="loginForm.get('email')" key="Email"></app-show-validate>
+                <app-show-validate [field]="signUpForm.get('email')" key="Email"></app-show-validate>
 				<div class="login__field">
 					<i class="login__icon fas fa-lock"></i>
 					<input type="password" class="login__input" placeholder="Password" formControlName="password">
 				</div>
-				<app-show-validate [field]="loginForm.get('password')" key="Password"></app-show-validate>
-				<button class="button login__submit">
-					<span class="button__text">Log In Now</span>
+                <app-show-validate [field]="signUpForm.get('password')" key="Password"></app-show-validate>
+				<button class="button login__submit"  [disabled]="!signUpForm.valid">
+					<span class="button__text">Sign up Now</span>
 				</button>
 			</form>
 		</div>

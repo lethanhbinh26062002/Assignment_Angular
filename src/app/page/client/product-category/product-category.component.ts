@@ -25,9 +25,6 @@ export class ProductCategoryComponent implements OnInit {
     this.productService.getProductsByCategory(idFromUrl).subscribe((data) => {
       this.products = data;
       console.log(data);
-      
-    console.log(JSON.stringify(data,null , ' '));
-
     });
   }
 }

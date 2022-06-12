@@ -1,10 +1,10 @@
 <div class="container px-4 py-5 mx-auto">
     <div class="row d-flex justify-content-center">
-        <div class="col-5">
+        <div class="col-4">
             <h4 class="heading">Shopping Bag</h4>
         </div>
-        <div class="col-7">
-            <div class="row text-right">
+        <div class="col-6">
+            <div class="row text-center">
                 <div class="col-4">
                     <h6 class="mt-2">Format</h6>
                 </div>
@@ -16,10 +16,17 @@
                 </div>
             </div>
         </div>
+        <div class="col-2">
+            <div class="row text-center">
+                <div class="col">
+                    <h6 class="mt-2">Action</h6>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="row d-flex justify-content-center border-top" *ngFor="let product of products">
-        <div class="col-5">
+        <div class="col-4">
             <div class="row d-flex">
                 <div class="book">
                     <img src="https://img4.thuthuatphanmem.vn/uploads/2020/12/26/hinh-anh-cuon-sach-mo-ra_051500221.png" class="book-img">
@@ -30,18 +37,23 @@
                 </div>
             </div>
         </div>
-        <div class="my-auto col-7">
-            <div class="row text-right">
+        <div class="my-auto col-6">
+            <div class="row text-center">
                 <div class="col-4">
-                    <p class="mob-text">{{product.price}} VNĐ</p>
+                    <p class="mob-text">{{product.price}} $</p>
+                </div>
+                <div class="col-4 mx-auto">
+                    <p class="mob-text">{{product.value}}</p>
                 </div>
                 <div class="col-4">
-                    <div class="row d-flex justify-content-end px-3">
-                        <p class="mb-0" id="cnt1">{{product.value}}</p>
-                    </div>
+                    <h6  class="mob-text">{{product.value * product.price}} $</h6>
                 </div>
-                <div class="col-4">
-                    <h6 class="mob-text">{{product.value * product.price}}</h6>
+            </div>
+        </div>
+        <div class="my-auto col-2">
+            <div class="row text-center">
+                <div class="">
+                    <button (click)="onDelete(product._id)" class="btn btn-warning mob-text">Delete</button>
                 </div>
             </div>
         </div>
@@ -93,7 +105,7 @@
                         </div>
                         <div class="row d-flex justify-content-between px-4">
                             <p class="mb-1 text-left">Shipping</p>
-                            <h6 class="mb-1 text-right">$</h6>
+                            <h6 class="mb-1 text-right">2$</h6>
                         </div>
                         <div class="row d-flex justify-content-between px-4" id="tax">
                             <p class="mb-1 text-left">Total (tax included)</p>
@@ -102,7 +114,7 @@
                         <button class="btn-block btn-blue">
                             <span>
                                 <span id="checkout">Checkout</span>
-                                <span id="check-amt">$26.48</span>
+                                <span id="check-amt">$</span>
                             </span>
                         </button>
                     </div>

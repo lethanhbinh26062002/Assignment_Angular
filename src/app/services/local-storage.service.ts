@@ -21,6 +21,9 @@ export class LocalStorageService {
   getItem() {
     return JSON.parse(localStorage.getItem('cart') || '[]');
   }
+  getItemps (): Observable<ProductCart[]> {
+    return JSON.parse(localStorage.getItem('cart') || '[]');
+  }
   setItem(addItem:ProductCart) {
     // Nghiệp vụ thêm sp vào giỏ
     // 1. Lấy ra toàn bộ sp trong giỏ

@@ -1,140 +1,75 @@
-/* Clearing floats */
-.cf:before,
-.cf:after {
-  content: " ";
-  display: table;
-}
+html { box-sizing: border-box; }
 
-.cf:after {
-  clear: both;
-}
+*,
+*::before,
+*::after { box-sizing: inherit; }
 
-.cf {
-  *zoom: 1;
-}
-
-/* Mini reset, no margins, paddings or bullets */
-.menu,
-.submenu {
+body * {
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 
-/* Main level */
-.menu {
-  margin: 50px auto;
-  width: 800px;
-  /* http://www.red-team-design.com/horizontal-centering-using-css-fit-content-value */
-  width: -moz-fit-content;
-  width: -webkit-fit-content;
-  width: fit-content;
-}
-
-.menu > li {
-  background: #34495e;
-  float: left;
-  position: relative;
-  transform: skewX(25deg);
-}
-
-.menu a {
-  display: block;
+body {
+  font: normal 100%/1.15 "Merriweather", serif;
+  background: #fff url("https://www.dropbox.com/s/0czxq7wr862we98/texture.jpg?raw=1") repeat 0 0;
   color: #fff;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-family: Arial, Helvetica;
-  font-size: 14px;
 }
 
-.menu li:hover {
-  background: #e74c3c;
-}
-
-.menu > li > a {
-  transform: skewX(-25deg);
-  padding: 1em 2em;
-}
-
-/* Dropdown */
-.submenu {
-  position: absolute;
-  width: 200px;
-  left: 50%;
-  margin-left: -100px;
-  transform: skewX(-25deg);
-  transform-origin: left top;
-}
-
-.submenu li {
-  background-color: #34495e;
+/* https://www.vecteezy.com/vector-art/87721-wood-fence-vectors */
+.wrapper {
   position: relative;
-  overflow: hidden;
+  max-width: 1298px;
+  height: auto;
+  margin:auto ;
+  background: transparent url("https://www.dropbox.com/s/qq5n8w99q40wtrg/wood-fence.png?raw=1") no-repeat center top 20em;
 }
 
-.submenu > li > a {
-  padding: 1em 2em;
+/* https://www.vecteezy.com/vector-art/237238-dog-family-colored-doodle-drawing */
+.box {
+  max-width: 70%;
+  min-height: 600px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.submenu > li::after {
-  content: "";
-  position: absolute;
-  top: -125%;
-  height: 100%;
-  width: 100%;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+h1 {
+  margin: 0 0 1rem 0;
+  font-size: 8em;
+  text-shadow: 0 0 6px #8b4d1a;
 }
 
-/* Odd stuff */
-.submenu > li:nth-child(odd) {
-  transform: skewX(-25deg) translateX(0);
+p {
+  margin-bottom: 0.5em;
+  font-size: 1.75em;
+  color: #ea8a1a;
 }
 
-.submenu > li:nth-child(odd) > a {
-  transform: skewX(25deg);
+p:first-of-type {
+  text-shadow: none;
 }
 
-.submenu > li:nth-child(odd)::after {
-  right: -50%;
-  transform: skewX(-25deg) rotate(3deg);
+p > a {
+  border-bottom: 1px dashed #837256;
+  font-style: italic;
+  text-decoration: none;
+  color: #837256;
 }
 
-/* Even stuff */
-.submenu > li:nth-child(even) {
-  transform: skewX(25deg) translateX(0);
-}
+p > a:hover { text-shadow: 0 0 3px #8b4d1a; }
 
-.submenu > li:nth-child(even) > a {
-  transform: skewX(-25deg);
-}
+p img { vertical-align: bottom; }
 
-.submenu > li:nth-child(even)::after {
-  left: -50%;
-  transform: skewX(25deg) rotate(3deg);
-}
+@media screen and (max-width: 600px) {
+  .wrapper {
+    background-size: 300px 114px;
+    background-position: center top 22em;
+    }
 
-/* Show dropdown */
-.submenu,
-.submenu li {
-  opacity: 0;
-  visibility: hidden;
-}
+  .box {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    background-size: 320px 185px;
+  }
 
-.submenu li {
-  transition: 0.2s ease transform;
 }
-
-.menu > li:hover .submenu,
-.menu > li:hover .submenu li {
-  opacity: 1;
-  visibility: visible;
-}
-
-.menu > li:hover .submenu li:nth-child(even) {
-  transform: skewX(25deg) translateX(15px);
-}
-
-.menu > li:hover .submenu li:nth-child(odd) {
-  transform: skewX(-25deg) translateX(-15px);
-}
-  

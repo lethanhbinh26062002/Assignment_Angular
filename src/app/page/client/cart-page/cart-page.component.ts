@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Product, ProductCart } from 'src/app/type/Product';
 
@@ -10,16 +11,27 @@ import { Product, ProductCart } from 'src/app/type/Product';
 export class CartPageComponent implements OnInit {
   products: ProductCart[];
   constructor(
-    private lsService: LocalStorageService,
+    public toastr: ToastrService,
   ) { 
     this.products = []
   }
 
   ngOnInit(): void {
-    this.lsService.getItem().subscribe((data: ProductCart[]) => {
-      this.products = data;
-      console.log(data);
-    })
+    this.onGetCart();
+  }
+  onGetCart(): void {
+    const Cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    this.products = Cart
+  }
+  onDelete(id: string): void {
+    const confirmDelete = confirm('Bạn có chắc chắn xoá không?');
+    if(confirmDelete && id){
+      const result = JSON.parse(localStorage.getItem('cart') || '[]');
+      const newData = result.filter((x: any) => x._id !== id);
+      localStorage.setItem('cart', JSON.stringify(newData));
+    }
+    this.toastr.success('Xóa thành công', 'Success');
+    this.onGetCart()
   }
 
 }
