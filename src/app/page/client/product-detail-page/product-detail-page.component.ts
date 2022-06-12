@@ -8,7 +8,13 @@ import { Product } from 'src/app/type/Product';
 @Component({
   selector: 'app-product-detail-page',
   templateUrl: './product-detail-page.component.html',
-  styleUrls: ['./product-detail-page.component.css']
+  styleUrls: [
+    './product-detail-page.component.css',
+    "../../../../assets/client/css/bootstrap.css",
+    "../../../../assets/client/css/bootstrap-responsive.css",
+    "../../../../assets/client/css/prettyPhoto.css",
+    "../../../../assets/client/css/custom-styles.css"
+  ]
 })
 export class ProductDetailPageComponent implements OnInit {
   product: Product;

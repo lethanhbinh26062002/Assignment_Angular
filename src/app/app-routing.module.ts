@@ -4,6 +4,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { CanAccessAdminGuard } from './guards/can-access-admin.guard';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ClientLayoutComponent } from './layouts/client-layout/client-layout.component';
+import { LayoutsComponent } from './layouts/layouts.component';
 import { AdminCategoryDetailComponent } from './page/admin/admin-category/admin-category-detail/admin-category-detail.component';
 import { AdminCategoryFormComponent } from './page/admin/admin-category/admin-category-form/admin-category-form.component';
 import { AdminCategoryListComponent } from './page/admin/admin-category/admin-category-list/admin-category-list.component';
@@ -127,6 +128,10 @@ const routes: Routes = [
     path: '403',
     component:ErrorPageComponent,
   },
+  {
+    path: 'logout',
+    component:LayoutsComponent
+  }
   // 1. Nếu có children thì ko sử dụng component để render
   // 2. Nếu vẫn muốn sd component(khung layout) thì trong component thì phải sd <router-outlet></router-outlet>
   // {

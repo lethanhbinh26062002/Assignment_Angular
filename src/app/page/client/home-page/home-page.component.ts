@@ -5,7 +5,13 @@ import { Product } from 'src/app/type/Product';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  styleUrls: [
+  './home-page.component.css',
+  "../../../../assets/client/css/bootstrap.css",
+  "../../../../assets/client/css/bootstrap-responsive.css",
+  "../../../../assets/client/css/prettyPhoto.css",
+  "../../../../assets/client/css/flexslider.css",
+  "../../../../assets/client/css/custom-styles.css"]
 })
 export class HomePageComponent implements OnInit {
   products: Product[];

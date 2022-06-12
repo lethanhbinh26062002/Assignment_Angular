@@ -7,7 +7,14 @@ import { Category } from 'src/app/type/Category';
 @Component({
   selector: 'app-client-layout',
   templateUrl: './client-layout.component.html',
-  styleUrls: ['./client-layout.component.css']
+  styleUrls: [
+    './client-layout.component.css',
+    "../../../assets/client/css/bootstrap.css",
+    "../../../assets/client/css/bootstrap-responsive.css",
+    "../../../assets/client/css/prettyPhoto.css",
+    "../../../assets/client/css/flexslider.css",
+    "../../../assets/client/css/custom-styles.css"
+]
 })
 export class ClientLayoutComponent implements OnInit {
   categorys: Category[];
@@ -48,6 +55,5 @@ export class ClientLayoutComponent implements OnInit {
     localStorage.removeItem('loggedInUser');
     this.toastr.success('Log Out thành công', 'Success');
     this.router.navigateByUrl('');
-    this.onGetList();
   }
 }
