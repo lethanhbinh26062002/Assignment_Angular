@@ -41,15 +41,18 @@ export class AdminCategoryListComponent implements OnInit {
   }
   onDelete(id: string) {
     // confirm
-    const confirmDelete = confirm('Bạn có chắc chắn xoá không?');
-    // kiểm tra dữ liệu => xoá
-    if (confirmDelete && id) {
-      this.categoryService.deleteCategory(id).subscribe((data) => {
-        this.toastr.success('Xóa danh mục thành công', 'Success');
-        // Cập nhật lại danh sách
-        this.onGetList();
-      })
+    const confirmDeleteCategory = confirm('Bạn có chắc chắn xoá danh mục này không?');
+    if(confirmDeleteCategory){
+      const confirmDeleteProductByCategory = confirm('Nếu xóa nó thì các sản phẩm thuộc danh mục này cũng sẽ bị xóa.          Bạn chắc chứ ?')
+        // kiểm tra dữ liệu => xoá
+        if (confirmDeleteCategory && confirmDeleteProductByCategory && id) {
+          this.categoryService.deleteCategory(id).subscribe((data) => {
+            this.toastr.success('Xóa danh mục thành công', 'Success');
+            this.toastr.info('Đã xóa sản phẩm thuộc danh mục', 'Success');
+            // Cập nhật lại danh sách
+            this.onGetList();
+          })
+        }
     }
-
   }
 }

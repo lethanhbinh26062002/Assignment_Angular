@@ -7,7 +7,12 @@ import { Product } from 'src/app/type/Product';
 @Component({
   selector: 'app-product-category',
   templateUrl: './product-category.component.html',
-  styleUrls: ['./product-category.component.css']
+  styleUrls: ['./product-category.component.css',
+  "../../../../assets/client/css/bootstrap.css",
+  "../../../../assets/client/css/bootstrap-responsive.css",
+  "../../../../assets/client/css/prettyPhoto.css",
+  "../../../../assets/client/css/flexslider.css",
+  "../../../../assets/client/css/custom-styles.css"]
 })
 export class ProductCategoryComponent implements OnInit {
   products: Product[];
@@ -23,7 +28,11 @@ export class ProductCategoryComponent implements OnInit {
   onGetList() {
     const idFromUrl = this.activateRoute.snapshot.params['id'];
     this.productService.getProductsByCategory(idFromUrl).subscribe((data) => {
-      this.products = data;
+      const filteredArray = data.filter(function(item){
+        return item.status !== 0;
+      });
+      console.log(filteredArray);
+      this.products = filteredArray;
     });
   }
 }

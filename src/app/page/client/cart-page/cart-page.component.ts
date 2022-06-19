@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Product, ProductCart } from 'src/app/type/Product';
 
-@Component({
+@Component({ 
   selector: 'app-cart-page',
   templateUrl: './cart-page.component.html',
   styleUrls: ['./cart-page.component.css']

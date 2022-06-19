@@ -87,8 +87,9 @@ $(document).ready(function () {
              <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" routerLink="">Categories</a>
                 <ul class="dropdown-menu">
-                    <li *ngFor="let category of categorys" ><a routerLink="/products/proCate/{{category._id}}" routerLink="">{{category.name}}</a></li>
+                    <li *ngFor="let category of categorys" ><a routerLink="/products/proCate/{{category._id}}">{{category.name}}</a></li>
                 </ul>
+                
              </li>
              <li class="dropdown">
                 <a class="" routerLink="">Blog</a>
