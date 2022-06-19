@@ -12,23 +12,24 @@ export class AdminUserListComponent implements OnInit {
 
   users: User[];
 
-  // Định nghĩa service dưới tên 1 biến, đã tạo bên services
   constructor(
     private userService: UserService,
     private toastr: ToastrService) {
     this.users = [];
   }
 
-  // Khi component render xong sẽ chạy 1 lần vào ngOnInit
   ngOnInit(): void {
     this.onGetList();
   }
-  // Lấy ds sẽ được gọi khi lần đầu render và khi xoá mỗi phần tử
+  
   onGetList() {
-    // Lắng nghe API trả về kq, bao giờ trả về xong thì data sẽ có dữ liệu
+    const UserLoacl = JSON.parse(localStorage.getItem('loggedInUser') || '[]');
     this.userService.getUsers().subscribe((data) => {
-      // Khi có dữ liệu sẽ gán về cho danh sách
-      this.users = data;
+      const filteredArray = data.filter(function(user){
+        return user._id !== UserLoacl.user._id;
+      });
+      console.log(filteredArray);
+      this.users = filteredArray;
     });
   }
   onUpdateStatus(userId: string, newStatus: number) {

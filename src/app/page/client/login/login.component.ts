@@ -41,14 +41,16 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('loggedInUser', JSON.stringify(data));
       //3 check role === 1 
       const User = JSON.parse(localStorage.getItem('loggedInUser') || '[]');
-      if(User.user.role === 1) {
-        this.toastr.success('Login thành công', 'Success');
+      if(User.user.role === 1 && User.user.status === 1) {
+        this.toastr.success('Login admin thành công', 'Success');
         this.router.navigateByUrl('/admin/products');
-      }else{
-        this.toastr.success('Login thành công', 'Success');
+      }else if(User.user.role === 0 && User.user.status === 1){
+        this.toastr.success('Login user thành công', 'Success');
         this.router.navigateByUrl('');
+      }else if(User.user.role === 0 || User.user.role === 1 && User.user.status === 0){
+        this.toastr.error('Tài khoản đã bị vô hiệu hóa. Đăng nhập tài khoản khác hoặc đăng ký mới', 'Error')
+        this.router.navigateByUrl('/login');
       }
-
     });
   }
   checkRole() {

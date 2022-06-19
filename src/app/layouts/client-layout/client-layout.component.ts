@@ -39,8 +39,11 @@ export class ClientLayoutComponent implements OnInit {
   onGetList() {
     // Lắng nghe API trả về kq, bao giờ trả về xong thì data sẽ có dữ liệu
     this.categoryService.getCategorys().subscribe((data) => {
-      // Khi có dữ liệu sẽ gán về cho danh sách
-      this.categorys = data;
+      const filteredArray = data.filter(function(categorys){
+        return categorys.status !== 0;
+      });
+      console.log(filteredArray);
+      this.categorys = filteredArray;
     });
   }
   checkRole(){

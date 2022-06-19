@@ -1,5 +1,5 @@
 export type User = {
-    _id: string, // nếu dùng nodejs thì là string
+    _id: string,
     name: string,
     email: string,
     password: string,
