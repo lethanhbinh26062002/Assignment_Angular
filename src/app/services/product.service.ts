@@ -25,8 +25,6 @@ export class ProductService {
   deleteProduct (id:string): Observable<any> {
     return this.http.delete(`${environment.products}/${id}`);
   }
-
-  // Dữ liệu gửi đi {name: string}, nhận về {id: number, name: string}
   createProduct (data: ProductAfter): Observable<Product> {
     return this.http.post<Product>(`${environment.products}/create`, data);
   }

@@ -17,7 +17,7 @@ export class LogoutComponent implements OnInit {
     this.toastr.warning('Log Out thành công', 'Warning');
     setTimeout(() => {
       this.router.navigateByUrl('');
-    },1)
+    },2000)
     
    }
 

@@ -3,9 +3,9 @@
   <div class="row-cols-4 clearfix no-margin col-lg-3 col-md-6 mb-4 mb-lg-0 mx-auto" *ngFor="let product of products">
     <ul class="gallery-post-grid holder">
             <li  class="span3 gallery-item" data-id="id-1" data-type="illustration">
-                <a routerLink=""><img src="https://img4.thuthuatphanmem.vn/uploads/2020/12/26/hinh-anh-cuon-sach-mo-ra_051500221.png" alt="Gallery"></a>
+                <a routerLink="/products/{{product._id}}"><img src="https://img4.thuthuatphanmem.vn/uploads/2020/12/26/hinh-anh-cuon-sach-mo-ra_051500221.png" alt="Gallery"></a>
                 <span class="project-details">
-                  <a routerLink="products/{{product._id}}">{{product.name}}</a>
+                  <a routerLink="/products/{{product._id}}">{{product.name}}</a>
                   <p><del> {{product.price}}</del> $</p>
                   <h4>{{product.sale_price}} $</h4>
                   {{product.description}}
